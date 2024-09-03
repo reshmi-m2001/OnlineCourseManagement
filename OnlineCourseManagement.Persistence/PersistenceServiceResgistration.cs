@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Persistence
 {
-    internal class PersistenceServiceResgistration
+    public static class PersistenceServiceResgistration
     {
     }
 }
