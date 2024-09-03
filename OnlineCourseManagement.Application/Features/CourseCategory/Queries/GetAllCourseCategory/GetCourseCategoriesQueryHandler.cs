@@ -24,23 +24,19 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.Get
             _courseCategoryRepository = courseCategoryRepository;
         }
 
-       
-
-        public async Task<CourseCategoryDTO> Handle(GetCourseCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<List<CourseCategoryDTO>> Handle(GetCourseCategoriesQuery request, CancellationToken cancellationToken)
         {
-
+           
 
             //Query the Database
-            var courseCategory = await _courseCategoryRepository.GetByIdAsync(request.id);
+            var courseCategories = await _courseCategoryRepository.GetAsync();
 
-            //Verify that the record Exists
-            if (courseCategory == null)
-                throw new NotFoundException(nameof(courseCategory), request.id);
-            //convert data objects into DTO object
+            // Convert data objects to DTO objects
 
-            var data = _mapper.Map<CourseCategoryDetailsDTO>(courseCategory);
+            var data = _mapper.Map<List<CourseCategoryDTO>>(courseCategories);
 
-            // return DTO object
+            //return List of DTO objects
+
             return data;
 
         }
