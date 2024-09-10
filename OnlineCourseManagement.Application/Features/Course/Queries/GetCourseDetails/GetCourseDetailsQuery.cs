@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.Course.Queries.GetCourseDetails
 {
-    public record GetCourseDetailsQuery(Guid id):IRequest<CourseDetailsDTO>;
+    public record GetCourseDetailsQuery(int id):IRequest<CourseDetailsDTO>;
   
 }

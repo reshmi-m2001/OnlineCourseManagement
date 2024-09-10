@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.GetCourseCategoryDetails
 {
-    public record GetCourseCategoryDetailsQuery(Guid id) : IRequest<CourseCategoryDetailsDTO>;
+    public record GetCourseCategoryDetailsQuery(int id) : IRequest<CourseCategoryDetailsDTO>;
     
     
 }

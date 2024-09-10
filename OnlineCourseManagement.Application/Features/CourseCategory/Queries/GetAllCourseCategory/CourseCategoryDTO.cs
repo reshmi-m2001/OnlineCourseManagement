@@ -9,7 +9,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.Get
     public class CourseCategoryDTO
     {
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string CategoryName { get; set; } = string.Empty;
     }
 }

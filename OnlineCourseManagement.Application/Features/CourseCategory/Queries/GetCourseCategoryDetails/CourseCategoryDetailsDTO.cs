@@ -8,7 +8,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.Get
 {
     public class CourseCategoryDetailsDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string CategoryName { get; set; } = string.Empty;
         public DateTime? DateCreated { get; set; }
         public DateTime DateModified { get; set; } = DateTime.Now;

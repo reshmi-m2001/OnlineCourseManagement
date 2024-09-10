@@ -9,6 +9,6 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.De
 {
     public class DeleteCourseCategoryCommand:IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

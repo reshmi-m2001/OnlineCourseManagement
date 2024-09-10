@@ -4,7 +4,7 @@ namespace OnlineCourseManagement.Application.Contracts.Persistence
 {
     public interface ICourseRepository : IGenericRepository<Course>
     {
-        Task<bool> CategoryExistsAsync(Guid categoryId);
+        Task<bool> CategoryExistsAsync(int categoryId);
 
     }
 }

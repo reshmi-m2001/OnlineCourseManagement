@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.CreateCourseCategory
 {
-    public class CreateCourseCategoryCommand :IRequest<Guid>
+    public class CreateCourseCategoryCommand :IRequest<int>
     {
         public string CategoryName { get; set; } = string.Empty;
     }

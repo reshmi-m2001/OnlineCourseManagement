@@ -26,12 +26,12 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.DeleteCour
 
             //Verfying that the course exists
 
-            if (courseToDelete != null)
-            {
+            if (courseToDelete == null)
+            
                 throw new NotFoundException(nameof(Course), request.Id);
-            }
-            //Remove the course from the database
-            await _courseRepository.DeleteAsync(courseToDelete);
+            
+                //Remove the course from the database
+                await _courseRepository.DeleteAsync(courseToDelete);
 
             //Return Unit , signaling that the operation was successful
             return Unit.Value;

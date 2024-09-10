@@ -47,7 +47,7 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCour
         }
 
         // Ensure the Category exists
-        private async Task<bool> CategoryExists(Guid categoryId, CancellationToken token)
+        private async Task<bool> CategoryExists(int categoryId, CancellationToken token)
         {
             return await _courseRepository.CategoryExistsAsync(categoryId);
         }

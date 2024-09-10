@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCourse
 {
-    public class CreateCourseCommand:IRequest<Guid>
+    public class CreateCourseCommand:IRequest<int>
     {
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public double Duration { get; set; }
         public string Instructor { get; set; } = string.Empty;
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
     /*    public string CategoryName { get; set; } = string.Empty;*/
         public string CourseLink { get; set; } = string.Empty;
 

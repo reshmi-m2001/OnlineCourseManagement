@@ -2,6 +2,7 @@
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Options;
+using OnlineCourseManagement.Application.Contracts.Logging;
 using OnlineCourseManagement.Application.Contracts.Persistence;
 using OnlineCourseManagement.Application.Exceptions;
 using System;
@@ -16,11 +17,15 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
     {
         private readonly IMapper _mapper;
         private readonly ICourseRepository _courseRepository;
+        private readonly ICourseCategoryRepository _courseCategoryRepository;
+        private readonly IAppLogger<UpdateCourseCommandHandler> _logger;
 
-        public UpdateCourseCommandHandler(IMapper mapper , ICourseRepository courseRepository)
+        public UpdateCourseCommandHandler(IMapper mapper , ICourseRepository courseRepository, ICourseCategoryRepository courseCategoryRepository,IAppLogger<UpdateCourseCommandHandler> logger)
         {
             this._mapper = mapper;
             this._courseRepository = courseRepository;
+            this._courseCategoryRepository = courseCategoryRepository;
+            this._logger = logger;
         }
         public async Task<Unit> Handle(UpdateCourseCommand request, CancellationToken cancellationToken)
         {
@@ -33,9 +38,16 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
 
             if (!validationResult.IsValid)
             {
+                _logger.LogWarning("Validation errors in update request for {0} -{1} ", nameof(Course), request.Id);
                 throw new BadRequestException("Invalid course", validationResult);
             }
-
+           /* // Ensure the CategoryId exists in the CourseCategory table
+            var categoryExists = await _courseCategoryRepository.ExistsAsync(request.CategoryId);
+            if (!categoryExists)
+            {
+                throw new NotFoundException("CourseCategory", request.CategoryId);
+            }
+*/
             //convert to DTO objects
             var courseToUpdate = _mapper.Map<Domain.Course>(request);
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.CreateCourseCategory
 {
-    public class CreateCourseCategoryCommandHandler : IRequestHandler<CreateCourseCategoryCommand, Guid>
+    public class CreateCourseCategoryCommandHandler : IRequestHandler<CreateCourseCategoryCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly ICourseCategoryRepository _courseCategoryReopsitory;
@@ -20,7 +20,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.Cr
             this._mapper = mapper;
             this._courseCategoryReopsitory = courseCategoryReopsitory;
         }
-        public async Task<Guid> Handle(CreateCourseCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateCourseCategoryCommand request, CancellationToken cancellationToken)
         {
 
 

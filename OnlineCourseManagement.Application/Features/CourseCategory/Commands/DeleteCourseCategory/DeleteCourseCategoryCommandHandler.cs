@@ -27,7 +27,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.De
             if (courseCategoryToDelete == null)
             
                 throw new NotFoundException(nameof(CourseCategory), request.Id)  ;
-            
+                
                 //Remove from database
                 await _courseCategoryRepository.DeleteAsync(courseCategoryToDelete);
             //Return unit

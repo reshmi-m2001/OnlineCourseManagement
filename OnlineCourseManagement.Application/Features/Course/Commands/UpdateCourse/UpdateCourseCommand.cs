@@ -9,11 +9,12 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
 {
     public class UpdateCourseCommand:IRequest<Unit>
     {
+        public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public double Duration { get; set; }
         public string Instructor { get; set; } = string.Empty;
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         /*   public string CategoryName { get; set; } = string.Empty;*/
         public string CourseLink { get; set; } = string.Empty;
     }

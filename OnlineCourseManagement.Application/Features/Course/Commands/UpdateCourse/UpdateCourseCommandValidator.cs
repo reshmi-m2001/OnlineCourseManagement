@@ -30,18 +30,18 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
                     .NotEmpty().WithMessage("{Instructor} is required.")
                     .MaximumLength(100).WithMessage("{Instructor} must not exceed 100 characters.");
 
-                RuleFor(c => c.CategoryId)
-                    .NotEmpty().WithMessage("Course category is required.")
-                    .MustAsync(CategoryExists).WithMessage("The specified course category does not exist.");
+            RuleFor(c => c.CategoryId)
+                .NotEmpty().WithMessage("Course category is required.")
+                .MustAsync(CategoryExists).WithMessage("The specified course category does not exist.");
 
-                RuleFor(c => c.CourseLink)
+            RuleFor(c => c.CourseLink)
                     .NotEmpty().WithMessage("{CourseLink} is required.")
                     .Must(LinkIsValid).WithMessage("{CourseLink} is not a valid URL.");
                 this._courseRepository = courseRepository;
             }
 
 
-            private async Task<bool> CategoryExists(Guid categoryId, CancellationToken cancellationToken)
+            private async Task<bool> CategoryExists(int categoryId, CancellationToken cancellationToken)
             {
                 return await _courseRepository.CategoryExistsAsync(categoryId);
             }

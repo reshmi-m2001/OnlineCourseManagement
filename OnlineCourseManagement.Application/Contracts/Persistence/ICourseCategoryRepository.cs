@@ -4,8 +4,10 @@ namespace OnlineCourseManagement.Application.Contracts.Persistence
 {
     public interface ICourseCategoryRepository : IGenericRepository<CourseCategory>
 
-    { 
-        Task<bool> IsCourseCategoryUnique(string name);
+    {
+/*        Task<bool> ExistsAsync(int categoryId);*/
+
+        Task<bool> IsCourseCategoryUnique(string courseCategoryName);
     }
 
 }

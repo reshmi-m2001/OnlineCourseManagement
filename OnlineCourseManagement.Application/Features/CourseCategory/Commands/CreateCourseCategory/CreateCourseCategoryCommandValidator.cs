@@ -17,12 +17,12 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.Cr
             RuleFor(p => p.CategoryName)
                 .NotEmpty().WithMessage("{CategoryName} is required")
                 .NotNull()
-                .MaximumLength(20).WithMessage("{CategoryName} should must be fewer than 20 characters");
+                .MaximumLength(50).WithMessage("{CategoryName} should must be fewer than 50 characters");
 
-            RuleFor(q => q)
+          /*  RuleFor(q => q)
                 .MustAsync(CourseCategoryNameUnique)
                 .WithMessage("The particular Course Category already exists.");
-
+*/
 
 
             this._courseCategoryRepository = courseCategoryRepository;

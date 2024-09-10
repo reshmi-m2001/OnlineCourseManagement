@@ -9,7 +9,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.Up
 {
     public class UpdateCourseCategoryCommand:IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string CategoryName { get; set; } = string.Empty;
     }
 }

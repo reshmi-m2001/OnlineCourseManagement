@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using MediatR.Pipeline;
+using OnlineCourseManagement.Application.Contracts.Logging;
 using OnlineCourseManagement.Application.Contracts.Persistence;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,14 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.Get
     {
         private readonly IMapper _mapper;
         private readonly ICourseCategoryRepository _courseCategoryRepository;
+        private readonly IAppLogger<GetCourseCategoriesQueryHandler> _logger;
 
-        public GetCourseCategoriesQueryHandler(IMapper mapper, ICourseCategoryRepository courseCategoryRepository)
+        public GetCourseCategoriesQueryHandler(IMapper mapper, ICourseCategoryRepository courseCategoryRepository,IAppLogger<GetCourseCategoriesQueryHandler> logger)
         {
 
-            _mapper = mapper;
-            _courseCategoryRepository = courseCategoryRepository;
+            this._mapper = mapper;
+            this._courseCategoryRepository = courseCategoryRepository;
+            this._logger = logger;
         }
 
         public async Task<List<CourseCategoryDTO>> Handle(GetCourseCategoriesQuery request, CancellationToken cancellationToken)
@@ -36,7 +39,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Queries.Get
             var data = _mapper.Map<List<CourseCategoryDTO>>(courseCategories);
 
             //return List of DTO objects
-
+            _logger.LogInformation("Course Categories were retrived successfully");
             return data;
 
         }

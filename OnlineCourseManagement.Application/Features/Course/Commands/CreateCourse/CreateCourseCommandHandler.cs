@@ -10,18 +10,20 @@ using System.Threading.Tasks;
 
 namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCourse
 {
-    public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, Guid>
+    public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly ICourseRepository _courseRepository;
+        private readonly ICourseCategoryRepository _courseCategoryRepository;  // Inject CourseCategoryRepository
 
-        public CreateCourseCommandHandler(IMapper mapper,ICourseRepository courseRepository) 
+        public CreateCourseCommandHandler(IMapper mapper,ICourseRepository courseRepository, ICourseCategoryRepository courseCategoryRepository) 
         {
             this._mapper = mapper;
             this._courseRepository = courseRepository;
+            this._courseCategoryRepository = courseCategoryRepository;
         }
 
-        public async Task<Guid> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
         {
 
 
@@ -31,10 +33,20 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCour
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.Errors.Any())
             {
-                throw new BadRequestException("Invalid Course Category", validationResult);
+                throw new BadRequestException("Invalid Course", validationResult);
             }
 
-            var courseToCreate= _mapper.Map<Domain.Course>(request);
+            // Ensure the CategoryId exists in the CourseCategory table
+            var categoryExists = await _courseRepository.CategoryExistsAsync(request.CategoryId);
+            if (!categoryExists)
+            {
+                throw new NotFoundException("CourseCategory", request.CategoryId);
+            }
+
+
+            // Map the request to the Course domain entity
+            var courseToCreate = _mapper.Map<Domain.Course>(request);
+            // Add the course to the database
             await _courseRepository.CreateAsync(courseToCreate);
 
             return courseToCreate.Id;
