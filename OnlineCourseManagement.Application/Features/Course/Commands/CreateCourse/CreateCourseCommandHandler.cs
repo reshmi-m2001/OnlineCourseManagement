@@ -31,16 +31,16 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCour
             var validator = new CreateCourseCommandValidator(_courseRepository);
 
             var validationResult = await validator.ValidateAsync(request);
-            if (!validationResult.Errors.Any())
+            if (validationResult.Errors.Any())
             {
                 throw new BadRequestException("Invalid Course", validationResult);
             }
 
             // Ensure the CategoryId exists in the CourseCategory table
-            var categoryExists = await _courseRepository.CategoryExistsAsync(request.CategoryId);
+            var categoryExists = await _courseRepository.CategoryExistsAsync(request.CourseCategoryId);
             if (!categoryExists)
             {
-                throw new NotFoundException("CourseCategory", request.CategoryId);
+                throw new NotFoundException("CourseCategory", request.CourseCategoryId);
             }
 
 

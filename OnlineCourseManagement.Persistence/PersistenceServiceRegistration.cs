@@ -14,15 +14,11 @@ namespace OnlineCourseManagement.Persistence
 {
     public static class PersistenceServiceRegistration
     {
-        public static IServiceCollection AddPersistenceServices(this ServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<ConnectionDatabaseContext>(options =>
-            {
-
-                options.UseMySQL(configuration.GetConnectionString("CourseConnectionString"));
-
-
+            services.AddDbContext<ConnectionDatabaseContext>(options => {
+                options.UseMySQL(configuration.GetConnectionString("CourseManagementConnectionString")).EnableSensitiveDataLogging();
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

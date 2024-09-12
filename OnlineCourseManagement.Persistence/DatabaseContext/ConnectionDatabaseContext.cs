@@ -21,18 +21,15 @@ namespace OnlineCourseManagement.Persistence.DatabaseContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
-
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ConnectionDatabaseContext).Assembly);
-          /*  modelBuilder.ApplyConfiguration(new CourseCategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new CourseConfiguration());*/
-
+            /*modelBuilder.Entity<Course>()
+           .HasOne(c => c.CourseCategory)
+           .WithMany(cc => cc.Courses)
+           .HasForeignKey(c => c.CourseCategoryId);*/
 
 
-
-
-
-
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(ConnectionDatabaseContext).Assembly);
+            modelBuilder.ApplyConfiguration(new CourseCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
 
 
             base.OnModelCreating(modelBuilder);

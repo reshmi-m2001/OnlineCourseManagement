@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineCourseManagement.Application.Features.CourseCategory.Queries.GetAllCourseCategory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,10 @@ namespace OnlineCourseManagement.Application.Features.Course.Queries.GetAllCours
         public string Description { get; set; } = string.Empty;
         public double Duration { get; set; }
         public string Instructor { get; set; } = string.Empty;
-        public int CategoryId { get; set; }
+      /*  public int CourseCategoryId { get; set; }*/
+       
         public string CourseLink { get; set; } = string.Empty;
-        public string CategoryName { get; set; } = string.Empty;
+       /* public string CategoryName { get; set; } = string.Empty;*/
+       //public CourseCategoryDTO? CourseCategory { get; set; }
     }
 }

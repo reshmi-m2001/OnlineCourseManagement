@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using OnlineCourseManagement.Application.Features.CourseCategory.Commands.CreateCourseCategory;
+using OnlineCourseManagement.Application.Features.CourseCategory.Commands.UpdateCourseCategory;
 using OnlineCourseManagement.Application.Features.CourseCategory.Queries.GetAllCourseCategory;
 using OnlineCourseManagement.Application.Features.CourseCategory.Queries.GetCourseCategoryDetails;
 using OnlineCourseManagement.Domain;
@@ -17,6 +19,9 @@ namespace OnlineCourseManagement.Application.MappingProfiles
         { 
             CreateMap<CourseCategoryDTO , CourseCategory>().ReverseMap();
             CreateMap<CourseCategory, CourseCategoryDetailsDTO>();
+
+            CreateMap<CreateCourseCategoryCommand, CourseCategory>();
+            CreateMap<UpdateCourseCategoryCommand, CourseCategory>();
         }
 
 

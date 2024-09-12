@@ -21,7 +21,7 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
 
                 RuleFor(c => c.Description)
                     .NotEmpty().WithMessage("{Description} is required.")
-                    .MaximumLength(200).WithMessage("{Description} must not exceed 200 characters.");
+                    .MaximumLength(500).WithMessage("{Description} must not exceed 500 characters.");
 
                 RuleFor(c => c.Duration)
                     .GreaterThan(0).WithMessage("{Duration} must be greater than 0.");
@@ -30,7 +30,7 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
                     .NotEmpty().WithMessage("{Instructor} is required.")
                     .MaximumLength(100).WithMessage("{Instructor} must not exceed 100 characters.");
 
-            RuleFor(c => c.CategoryId)
+            RuleFor(c => c.CourseCategoryId)
                 .NotEmpty().WithMessage("Course category is required.")
                 .MustAsync(CategoryExists).WithMessage("The specified course category does not exist.");
 

@@ -35,8 +35,8 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.CreateCour
                 .MaximumLength(100).WithMessage("{Instructor} must not exceed 100 characters.");
 
             // CategoryId validation
-            RuleFor(c => c.CategoryId)
-                .NotEmpty().WithMessage("{CategoryId} is required.")
+            RuleFor(c => c.CourseCategoryId)
+                .NotEmpty().WithMessage("{CourseCategoryId} is required.")
                 .MustAsync(CategoryExists).WithMessage("The specified {CategoryId} does not exist.");
 
             // CourseLink validation

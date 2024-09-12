@@ -10,5 +10,6 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.Cr
     public class CreateCourseCategoryCommand :IRequest<int>
     {
         public string CategoryName { get; set; } = string.Empty;
+       
     }
 }

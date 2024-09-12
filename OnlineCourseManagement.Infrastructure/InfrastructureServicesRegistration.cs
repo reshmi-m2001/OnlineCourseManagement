@@ -13,8 +13,8 @@ namespace OnlineCourseManagement.Infrastructure
 {
     public static class InfrastructureServicesRegistration
     {
-        public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection
-            services, IConfigurationProvider configuration)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection
+            services)
         {
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             return services;

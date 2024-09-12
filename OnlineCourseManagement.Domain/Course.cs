@@ -8,8 +8,8 @@ namespace OnlineCourseManagement.Domain
        public string Description {  get; set; } = string.Empty;
        public double Duration {  get; set; }
        public string Instructor { get; set; } = string.Empty ;
-       public Guid CategoryId { get; set; }
+       public int CourseCategoryId { get; set; }
        public string CourseLink { get; set; } = string.Empty;
-       public CourseCategory CourseCategory { get; set; } = new CourseCategory();
+       //public CourseCategory? CourseCategory { get; set; } = new CourseCategory();
     }
 }

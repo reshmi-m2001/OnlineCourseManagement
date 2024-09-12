@@ -14,8 +14,8 @@ namespace OnlineCourseManagement.Application.Features.Course.Commands.UpdateCour
         public string Description { get; set; } = string.Empty;
         public double Duration { get; set; }
         public string Instructor { get; set; } = string.Empty;
-        public int CategoryId { get; set; }
-        /*   public string CategoryName { get; set; } = string.Empty;*/
+        public int CourseCategoryId { get; set; }
+        /*public string CategoryName { get; set; } = string.Empty;*/
         public string CourseLink { get; set; } = string.Empty;
     }
 }

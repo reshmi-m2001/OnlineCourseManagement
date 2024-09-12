@@ -27,7 +27,7 @@ namespace OnlineCourseManagement.Application.Features.CourseCategory.Commands.Cr
             //Validate the incoming data
             var validator = new CreateCourseCategoryCommandValidator(_courseCategoryReopsitory);
             var validationResult = await validator.ValidateAsync(request);
-            if (!validationResult.Errors.Any())
+            if (validationResult.Errors.Any())
             {
                 throw new BadRequestException("Invalid Course Category", validationResult);
             }
